@@ -1,10 +1,6 @@
 /* style.css — mobile-first styling */
 
 /* Cache l'image par défaut */
-.hidden {
-    display: none;
-}
-
 .quiz-image {
     display: block;
     margin: 1rem auto;
@@ -12,6 +8,10 @@
     max-width: 95%;
     height: auto;
     border-radius: 10px;
+}
+
+.hidden {
+    display: none;
 }
 
 body {
@@ -71,6 +71,10 @@ button {
     cursor: pointer;
 }
 
+.mrgbtm {
+    margin-bottom: 0.4rem;
+}
+
 button:disabled {
     background-color: #ccc;
     cursor: default;
@@ -96,3 +100,83 @@ button:disabled {
     color: #080;
     border: 1px solid #080;
 }
+
+.page-footer {
+    text-align: center;
+    font-size: 1rem;
+    padding: 1rem;
+    background-color: #f1f1f1;
+    color: #333;
+    position: relative;
+    margin-top: 2rem;
+}
+
+.page-footer p {
+    margin: 0;
+}
+
+/* Lightbox - image plein écran */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.lightbox img {
+    max-width: 95%;
+    max-height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.hidden {
+    display: none;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    margin: 2rem auto;
+    text-align: center;
+    font-family: sans-serif;
+  }
+  
+  .controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem; /* Espace entre les boutons */
+    margin-bottom: 1rem;
+  }
+  
+  .controls button {
+    background-color: #fff;
+    border: 1px solid #1d72b8;  /* Bordure bleue fine */
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .controls button:hover {
+    background-color: #e0f7fa;
+  }
+  
+  .cesar-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .cesar-table th, .cesar-table td {
+    border: 1px solid #ccc;
+    padding: 0.4rem;
+    font-size: 1.2rem;
+  }
+  

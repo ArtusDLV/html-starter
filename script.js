@@ -39,7 +39,69 @@ function checkAnswer(qNum) {
 function afficherImage() {
     const img = document.getElementById("morse-image");
     const bouton = document.getElementById("bouton-image");
-  
+
     img.classList.remove("hidden");  // Affiche l'image
     bouton.style.display = "none";   // Cache le bouton
-}  
+}
+
+function agrandirImage(src) {
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    lightboxImg.src = src;
+    lightbox.classList.remove("hidden");
+}
+
+function fermerLightbox() {
+    const lightbox = document.getElementById("lightbox");
+    lightbox.classList.add("hidden");
+}
+
+const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+let decalage = 0;
+
+function genererTable() {
+  const tbody = document.getElementById('cesar-body');
+  tbody.innerHTML = '';
+  for (let i = 0; i < 26; i++) {
+    const lettreClair = alphabet[i];
+    const lettreCodee = alphabet[(i + decalage + 26) % 26];
+    const row = `<tr><td>${lettreClair}</td><td>${lettreCodee}</td></tr>`;
+    tbody.innerHTML += row;
+  }
+}
+
+function decaler(direction) {
+  decalage = (decalage + direction + 26) % 26;
+  genererTable();
+}
+
+function toggleContainer() {
+    const container = document.querySelector('.container');
+    const button = document.getElementById('toggle-button');
+    
+    // Toggle le style d'affichage
+    if (container.style.display === 'none') {
+      container.style.display = 'block';
+      button.textContent = 'Masquer l\'aide au décalage';
+    } else {
+      container.style.display = 'none';
+      button.textContent = 'Aide au décalage';
+    }
+  }
+
+  function toggleContainerCode() {
+    const container = document.querySelector('.containerCodes');
+    const button = document.getElementById('toggle-button-codes');
+    
+    // Toggle le style d'affichage
+    if (container.style.display === 'none') {
+      container.style.display = 'block';
+      button.textContent = 'Masquer les codes utiles';
+    } else {
+      container.style.display = 'none';
+      button.textContent = 'Codes utiles';
+    }
+  }
+
+
+window.onload = genererTable;

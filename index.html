@@ -8,6 +8,10 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 
+<div id="lightbox" class="lightbox hidden" onclick="fermerLightbox()">
+  <img id="lightbox-img" src="" alt="image zoomée" />
+</div>
+
 <body>
   <h1 class="page-title">Jeu de piste EVG Baptiste</h1>
 
@@ -27,12 +31,37 @@
     <div class="feedback" id="feedback-2"></div>
   </div>
 
-  <img src="images/bambou.png" alt="code bambou" class="quiz-image" />
+  <button id="toggle-button-codes" class="mrgbtm" onclick="toggleContainerCode()">Code utiles</button>
+  <div class="containerCodes" style="display: none;">
+    <img src="images/bambou.png" alt="code bambou" class="quiz-image" onclick="agrandirImage(this.src)" />
 
-  <button onclick="afficherImage()" id="bouton-image">Afficher l'image secrète</button>
-  <img src="images/morse.png" alt="code morse" class="quiz-image hidden" id="morse-image" />
+    <img src="images/vigenere.png" alt="code vigenere" class="quiz-image" onclick="agrandirImage(this.src)" />
+
+    <button onclick="afficherImage()" class="mrgbtm" id="bouton-image">Afficher l'image secrète</button>
+    <img src="images/morse.png" alt="code morse" class="quiz-image hidden" id="morse-image" onclick="agrandirImage(this.src)"/>
+  </div>
+
+  <button id="toggle-button" onclick="toggleContainer()">Aide au décalage</button>
+  <div class="container" style="display: none;">
+    <div class="controls">
+      <button onclick="decaler(-1)">⬆️</button>
+      <button onclick="decaler(1)">⬇️</button>
+    </div>
+    <table class="cesar-table">
+      <tbody id="cesar-body">
+        <!-- Rempli dynamiquement par JS -->
+      </tbody>
+    </table>
+  </div>
+  
 
   <script src="script.js"></script>
 </body>
+
+<footer class="page-footer">
+  <p>Si vous êtes bloqués :</p>
+  <br>
+  <a href="tel:0601731212">📞 06 01 73 12 12</a></p>
+</footer>
 
 </html>
