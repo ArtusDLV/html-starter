@@ -1,4 +1,21 @@
 /* style.css — mobile-first styling */
+#password-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 20%;
+  }
+  
+  #password-input {
+    padding: 10px;
+    font-size: 1rem;
+    width: 200px;
+    margin-right: 10px;
+  }
+  
+  #page-container {
+    width: 100%;
+    display: none;
+  }
 
 /* Cache l'image par défaut */
 .quiz-image {

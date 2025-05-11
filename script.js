@@ -37,11 +37,14 @@ function checkAnswer(qNum) {
 }
 
 function afficherImage() {
+    const confirmation = confirm("Êtes-vous sûr de vouloir afficher le code morse ?");
     const img = document.getElementById("morse-image");
     const bouton = document.getElementById("bouton-image");
 
-    img.classList.remove("hidden");  // Affiche l'image
-    bouton.style.display = "none";   // Cache le bouton
+    if (confirmation) {
+        img.classList.remove("hidden");  // Affiche l'image
+        bouton.style.display = "none";   // Cache le bouton
+    }
 }
 
 function agrandirImage(src) {
@@ -60,48 +63,64 @@ const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 let decalage = 0;
 
 function genererTable() {
-  const tbody = document.getElementById('cesar-body');
-  tbody.innerHTML = '';
-  for (let i = 0; i < 26; i++) {
-    const lettreClair = alphabet[i];
-    const lettreCodee = alphabet[(i + decalage + 26) % 26];
-    const row = `<tr><td>${lettreClair}</td><td>${lettreCodee}</td></tr>`;
-    tbody.innerHTML += row;
-  }
+    const tbody = document.getElementById('cesar-body');
+    tbody.innerHTML = '';
+    for (let i = 0; i < 26; i++) {
+        const lettreClair = alphabet[i];
+        const lettreCodee = alphabet[(i + decalage + 26) % 26];
+        const row = `<tr><td>${lettreClair}</td><td>${lettreCodee}</td></tr>`;
+        tbody.innerHTML += row;
+    }
 }
 
 function decaler(direction) {
-  decalage = (decalage + direction + 26) % 26;
-  genererTable();
+    decalage = (decalage + direction + 26) % 26;
+    genererTable();
 }
 
 function toggleContainer() {
     const container = document.querySelector('.container');
     const button = document.getElementById('toggle-button');
-    
+
     // Toggle le style d'affichage
     if (container.style.display === 'none') {
-      container.style.display = 'block';
-      button.textContent = 'Masquer l\'aide au décalage';
+        container.style.display = 'block';
+        button.textContent = 'Masquer l\'aide au décalage';
     } else {
-      container.style.display = 'none';
-      button.textContent = 'Aide au décalage';
+        container.style.display = 'none';
+        button.textContent = 'Aide au décalage';
     }
-  }
+}
 
-  function toggleContainerCode() {
+function toggleContainerCode() {
     const container = document.querySelector('.containerCodes');
     const button = document.getElementById('toggle-button-codes');
-    
+
     // Toggle le style d'affichage
     if (container.style.display === 'none') {
-      container.style.display = 'block';
-      button.textContent = 'Masquer les codes utiles';
+        container.style.display = 'block';
+        button.textContent = 'Masquer les codes utiles';
     } else {
-      container.style.display = 'none';
-      button.textContent = 'Codes utiles';
+        container.style.display = 'none';
+        button.textContent = 'Codes utiles';
     }
-  }
+}
 
+function verifierMotDePasse() {
+    const motDePasseCorrect = "konami"; // Remplace ce mot de passe par le bon
+    const motDePasseSaisi = document.getElementById('password-input').value;
+    const errorMessage = document.getElementById('error-message');
+    const pageContainer = document.getElementById('page-container');
+    const passwordContainer = document.getElementById('password-container');
+
+    if (motDePasseSaisi === motDePasseCorrect) {
+        // Si le mot de passe est correct, afficher la page
+        pageContainer.style.display = 'block';
+        passwordContainer.style.display = 'none';  // Cacher le champ de mot de passe
+    } else {
+        // Si le mot de passe est incorrect, afficher le message d'erreur
+        errorMessage.style.display = 'block';
+    }
+}
 
 window.onload = genererTable;

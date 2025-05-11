@@ -13,47 +13,57 @@
 </div>
 
 <body>
-  <h1 class="page-title">Jeu de piste EVG Baptiste</h1>
-
-  <div class="question-block" id="question-1">
-    <label for="answer-1">1. Quelle est la capitale de la France ?</label>
-    <span class="error-counter" id="errors-1">Erreurs : 0</span>
-    <input type="text" id="answer-1" />
-    <button onclick="checkAnswer(1)">Valider</button>
-    <div class="feedback" id="feedback-1"></div>
-  </div>
-
-  <div class="question-block" id="question-2" style="display: none;">
-    <label for="answer-2">2. Combien font 5 + 7 ?</label>
-    <span class="error-counter" id="errors-2">Erreurs : 0</span>
-    <input type="text" id="answer-2" />
-    <button onclick="checkAnswer(2)">Valider</button>
-    <div class="feedback" id="feedback-2"></div>
-  </div>
-
-  <button id="toggle-button-codes" class="mrgbtm" onclick="toggleContainerCode()">Code utiles</button>
-  <div class="containerCodes" style="display: none;">
-    <img src="images/bambou.png" alt="code bambou" class="quiz-image" onclick="agrandirImage(this.src)" />
-
-    <img src="images/vigenere.png" alt="code vigenere" class="quiz-image" onclick="agrandirImage(this.src)" />
-
-    <button onclick="afficherImage()" class="mrgbtm" id="bouton-image">Afficher l'image secrète</button>
-    <img src="images/morse.png" alt="code morse" class="quiz-image hidden" id="morse-image" onclick="agrandirImage(this.src)"/>
-  </div>
-
-  <button id="toggle-button" onclick="toggleContainer()">Aide au décalage</button>
-  <div class="container" style="display: none;">
-    <div class="controls">
-      <button onclick="decaler(-1)">⬆️</button>
-      <button onclick="decaler(1)">⬇️</button>
+  <div id="password-container">
+    <input type="password" id="password-input" placeholder="Entrez le mot de passe">
+    <button onclick="verifierMotDePasse()">Valider</button>
+    <div id="error-message" style="display:none; color: white; background-color: red; padding: 10px; margin-top: 10px;">
+      Mauvais mot de passe, contactez le numéro ci-dessous
     </div>
-    <table class="cesar-table">
-      <tbody id="cesar-body">
-        <!-- Rempli dynamiquement par JS -->
-      </tbody>
-    </table>
   </div>
-  
+  <div id="page-container" style="display:none;">
+    <h1 class="page-title">Jeu de piste EVG Baptiste</h1>
+
+    <div class="question-block" id="question-1">
+      <label for="answer-1">1. Quelle est la capitale de la France ?</label>
+      <span class="error-counter" id="errors-1">Erreurs : 0</span>
+      <input type="text" id="answer-1" />
+      <button onclick="checkAnswer(1)">Valider</button>
+      <div class="feedback" id="feedback-1"></div>
+    </div>
+
+    <div class="question-block" id="question-2" style="display: none;">
+      <label for="answer-2">2. Combien font 5 + 7 ?</label>
+      <span class="error-counter" id="errors-2">Erreurs : 0</span>
+      <input type="text" id="answer-2" />
+      <button onclick="checkAnswer(2)">Valider</button>
+      <div class="feedback" id="feedback-2"></div>
+    </div>
+
+    <button id="toggle-button-codes" class="mrgbtm" onclick="toggleContainerCode()">Code utiles</button>
+    <div class="containerCodes" style="display: none;">
+      <img src="images/bambou.png" alt="code bambou" class="quiz-image" onclick="agrandirImage(this.src)" />
+
+      <img src="images/vigenere.png" alt="code vigenere" class="quiz-image" onclick="agrandirImage(this.src)" />
+
+      <button onclick="afficherImage()" class="mrgbtm" id="bouton-image">Code Morse (perte de points)</button>
+      <img src="images/morse.png" alt="code morse" class="quiz-image hidden" id="morse-image"
+        onclick="agrandirImage(this.src)" />
+    </div>
+
+    <button id="toggle-button" onclick="toggleContainer()">Aide au décalage</button>
+    <div class="container" style="display: none;">
+      <div class="controls">
+        <button onclick="decaler(-1)">⬆️</button>
+        <button onclick="decaler(1)">⬇️</button>
+      </div>
+      <table class="cesar-table">
+        <tbody id="cesar-body">
+          <!-- Rempli dynamiquement par JS -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
   <script src="script.js"></script>
 </body>
